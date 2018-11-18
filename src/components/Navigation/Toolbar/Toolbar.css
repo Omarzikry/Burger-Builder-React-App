@@ -16,3 +16,20 @@
     height: 100%;
     
 }
+.logo{
+    height: 60%;
+}
+.menuToggle{
+    cursor: pointer;
+    color: white;
+    font-size: 1.3em;
+    display: none
+}
+@media only screen and (max-width: 499px){
+    .desktopOnly{
+        display: none
+    }
+    .menuToggle{
+        display: block
+    }
+}

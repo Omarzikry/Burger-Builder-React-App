@@ -5,9 +5,11 @@ import NavigationItems from '../NavigationItems/NavigationItems';
 const toolbar = (props) => {
     return (
        <header className={classes.Toolbar}>
-           <div>MENU</div>
-           <Logo></Logo>
-           <nav>
+           <div onClick={props.click} className={classes.menuToggle}><i class="fas fa-bars"></i></div>
+           <div className={classes.logo}>
+           <Logo />
+           </div>
+           <nav className={classes.desktopOnly}>
                <NavigationItems />
            </nav>
        </header>
