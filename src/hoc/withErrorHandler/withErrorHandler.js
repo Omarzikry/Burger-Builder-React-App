@@ -4,9 +4,10 @@ import Aux from '../../hoc/Auxiliary';
 const withErrorHandler = (WrappedComponent , axios) => {
     return class extends Component{
         state = {
-            error: null
+            error: null,
+            allowMount:false
         }
-        componentWillMount(){
+        componentDidMount(){
             this.reqInterceptor = axios.interceptors.request.use(req => {
                 this.setState({error: null});
                 return req;
@@ -14,6 +15,9 @@ const withErrorHandler = (WrappedComponent , axios) => {
             this.resInterceptor = axios.interceptors.response.use(res => res, error => {
                 this.setState({error: error});
             });
+            this.setState({
+                allowMount:true
+            })
         }
         componentWillUnmount(){
             axios.interceptors.request.eject(this.reqInterceptor);
@@ -23,12 +27,13 @@ const withErrorHandler = (WrappedComponent , axios) => {
             this.setState({error: null})
         };
         render(){
+            let {allowMount, error} = this.state;
             return (
                 <Aux>
-                    <Modal show={this.state.error} modalClosed={this.errorConfirmedHandler}>
-                        {this.state.error ? this.state.error.message: null}
+                    <Modal show={error} modalClosed={this.errorConfirmedHandler}>
+                        {error ? error.message: null}
                     </Modal>
-                    <WrappedComponent {...this.props} />
+                    { allowMount && <WrappedComponent {...this.props} />}
                 </Aux>
             );
         };
