@@ -1,10 +1,10 @@
-.Toolbar{
+.Toolbar {
     height: 56px;
     width: 100%;
     position: fixed;
-    left: 0;
     top: 0;
-    background-color: #703b09;
+    left: 0;
+    background-color: #703B09;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -12,24 +12,17 @@
     box-sizing: border-box;
     z-index: 90;
 }
-.Toolbar nav{
+
+.Toolbar nav {
     height: 100%;
-    
 }
-.logo{
-    height: 60%;
+
+.Logo {
+    height: 80%;
 }
-.menuToggle{
-    cursor: pointer;
-    color: white;
-    font-size: 1.3em;
-    display: none
-}
-@media only screen and (max-width: 499px){
-    .desktopOnly{
-        display: none
-    }
-    .menuToggle{
-        display: block
+
+@media (max-width: 499px) {
+    .DesktopOnly {
+        display: none;
     }
 }

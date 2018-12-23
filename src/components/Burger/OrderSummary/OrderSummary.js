@@ -1,28 +1,35 @@
-import React , {Component} from 'react';
-import Aux from '../../../hoc/Auxiliary';
+import React, { Component } from 'react';
+
+import Auxiliary from '../../../hoc/Auxiliary/Auxiliary';
 import Button from '../../UI/Button/Button';
-class OrderSummary extends Component{
-    componentWillUpdate(){
-        console.log('[OrderSummary] will update')
+
+class OrderSummary extends Component {
+    // This could be a functional component, doesn't have to be a class
+    componentWillUpdate() {
+        console.log('[OrderSummary] WillUpdate');
     }
-    render(){
-        const ingredientSummary = Object.keys(this.props.ingredients).map(ingredient => {
-            return (
-                <li key={ingredient + this.props.ingredients[ingredient]}><span style={{textTransform: 'capitalize'}}>{ingredient}</span>: {this.props.ingredients[ingredient]}</li>
-            );
-        });
+
+    render () {
+        const ingredientSummary = Object.keys( this.props.ingredients )
+            .map( igKey => {
+                return (
+                    <li key={igKey}>
+                        <span style={{ textTransform: 'capitalize' }}>{igKey}</span>: {this.props.ingredients[igKey]}
+                    </li> );
+            } );
+
         return (
-            <Aux>
+            <Auxiliary>
                 <h3>Your Order</h3>
-                <p>A delicious Burger with the following ingredients:</p>
+                <p>A delicious burger with the following ingredients:</p>
                 <ul>
                     {ingredientSummary}
                 </ul>
-                <p>Total Price: <strong>{this.props.finalPrice.toFixed(2)} $</strong></p>
+                <p><strong>Total Price: {this.props.price.toFixed( 2 )}</strong></p>
                 <p>Continue to Checkout?</p>
-                <Button btnType="Danger" clicked={this.props.purchaseCanceled}>CANCEL</Button>
+                <Button btnType="Danger" clicked={this.props.purchaseCancelled}>CANCEL</Button>
                 <Button btnType="Success" clicked={this.props.purchaseContinued}>CONTINUE</Button>
-            </Aux>
+            </Auxiliary>
         );
     }
 }
