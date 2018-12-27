@@ -5,7 +5,6 @@ import CheckoutSummary from '../../components/Order/CheckoutSummary/CheckoutSumm
 import ContactData from './ContactData/ContactData';
 import { connect } from 'react-redux';
 import Auxiliary from '../../hoc/Auxiliary/Auxiliary';
-import * as actionsCreators from '../../store/actions/index';
 class Checkout extends Component {
     checkoutCancelledHandler = () => {
         this.props.history.goBack();
